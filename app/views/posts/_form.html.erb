@@ -1,0 +1,42 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="jumbotron container">
+    <div class="f">
+        <div class="form-group">
+    <label >Name</label><br />
+    <%= f.text_field :name,:class => 'form-control',:required=>true %>
+  </div>
+ <div class="form-group">
+    <label >Section</label><br />
+    <%= f.text_field :section,:class => 'form-control',:required=>true  %>
+  </div>
+ <div class="form-group">
+    <label >Email</label><br />
+    <%= f.text_field :email,:class => 'form-control',:required=>true ,:type=> 'email' %>
+  </div>
+ <div class="form-group">
+    <label >Phone</label><br />
+    <%= f.text_field :phone,:class => 'form-control',:required=>true ,:min=>'1000000000', :max=>'9999999999',:type=> 'number' %>
+  </div>
+  <div class="actions">
+      <br>
+  <%= f.submit "Save" , :class => 'btn btn-primary btn-sm space' %><%= link_to "Back",posts_path , :class => 'btn btn-primary btn-sm' %>
+      
+  </div>
+        </div>
+
+<% end %>
+
+</div>
+
+ 
